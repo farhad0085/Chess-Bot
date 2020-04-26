@@ -1,3 +1,6 @@
+String moves[8] = {"a2a3", "b2b4", "c2c4", "d2d3", "e2e4", "f2f3", "g2g3", "h2h4"};
+int i = 0;
+
 void setup() 
 {
   for(int i = 5; i<=12; i++){
@@ -8,12 +11,13 @@ void setup()
   digitalWrite(28, LOW);
   pinMode(34,OUTPUT); 
   digitalWrite(34, LOW);
-  
   Serial.begin(9600);
 }
 
 void loop() 
 {
+  Serial.println(moves[i]);
+    
   if(Serial.available() > 0)
   {
     String data = Serial.readString();
@@ -79,4 +83,5 @@ void loop()
       digitalWrite(34, LOW);
     }
   }
+  i++;
 }

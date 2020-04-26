@@ -30,15 +30,22 @@ class ChessApp(App):
         self.title = 'Chess Engine'
         return RelativeLayout()
 
-def userinput(pos):
-	f = open("usermoves.txt", "r")
-	usermoves = f.read()
-	usermoves = usermoves.split()
-	return usermoves[pos]
+# def userinput(pos):
+# 	f = open("usermoves.txt", "r")
+# 	usermoves = f.read()
+# 	usermoves = usermoves.split()
+# 	return usermoves[pos]
+
+def userinput():
+	time.sleep(2)
+	dataFromArduino = str(ser.readline())
+	dataFromArduino = dataFromArduino[2:6]
+	print("User Move: " + dataFromArduino)
+	return dataFromArduino
 
 def printComputerMove(Cmoves):
 	f = open("computermoves.txt", "a")
-	print(Cmoves)
+	print("Computer Move: " + Cmoves)
 	ser.write(Cmoves.encode())
 	print("LED ON")
 	time.sleep(3)
@@ -457,7 +464,8 @@ def main():
         # We query the user until she enters a (pseudo) legal move.
         move = None
         while move not in hist[-1].gen_moves():
-            match = re.match('([a-h][1-8])'*2, userinput(i))
+            #match = re.match('([a-h][1-8])'*2, userinput(i))
+            match = re.match('([a-h][1-8])'*2, userinput())
             if match:
                 move = parse(match.group(1)), parse(match.group(2))
             else:
