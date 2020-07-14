@@ -1,0 +1,24 @@
+Capture chess board
+now detect squares with chess peice [ 1,1,1,1,1,1,1,1
+				      1,1,1,1,1,1,1,1
+ 				      0,0,0,0,0,0,0,0
+				      0,0,0,0,0,0,0,0
+				      0,0,0,0,0,0,0,0				#initial states
+ 				      0,0,0,0,0,0,0,0
+				      1,1,1,1,1,1,1,1
+				      1,1,1,1,1,1,1,1]
+
+now user moves 			    [ 1,1,1,1,1,1,1,1
+				      1,1,1,1,1,1,1,1
+ 				      0,0,0,0,0,0,0,0
+				      0,0,0,0,0,0,0,0
+				      0,0,0,0,0,0,0,0				#after user move
+ 				      0,0,0,0,1,0,0,0
+				      1,1,1,1,0,1,1,1
+				      1,1,1,1,1,1,1,1]
+
+now after chess peice's position change, detect squares with chess peice once again and minus this position from previous and get the user move
+now send this move to sunfish and get computer move and send that move to RoboArm.
+
+RoboArm will move computer's peices to that place.
+Loop
